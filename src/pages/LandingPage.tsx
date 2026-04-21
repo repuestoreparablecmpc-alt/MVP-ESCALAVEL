@@ -1,25 +1,34 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Rocket, Code, Smartphone, Palette, CheckCircle, ChevronRight, Mail, User, Phone, MessageSquare } from 'lucide-react';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../lib/firebase';
 import './LandingPage.css';
 
 const LandingPage = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate Firebase Firestore save
-    // const formData = new FormData(e.currentTarget);
-    // const data = Object.fromEntries(formData.entries());
-    // await addDoc(collection(db, 'leads'), { ...data, createdAt: new Date() });
-    
-    setTimeout(() => {
+    try {
+      const formData = new FormData(e.currentTarget);
+      const data = Object.fromEntries(formData.entries());
+      
+      await addDoc(collection(db, 'leads'), { 
+        ...data, 
+        createdAt: serverTimestamp() 
+      });
+      
       setIsSubmitting(false);
       navigate('/success');
-    }, 1500);
+    } catch (error) {
+      console.error("Erro ao salvar lead no banco de dados: ", error);
+      setIsSubmitting(false);
+      alert("Ocorreu um erro ao enviar a mensagem. Tente novamente ou revise as regras do Firebase.");
+    }
   };
 
   return (

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LogOut, Search, Settings, LayoutDashboard } from 'lucide-react';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
+import { db } from '../lib/firebase';
 import './Dashboard.css';
 
 // Interface for Firebase Firestore Lead
@@ -18,20 +20,34 @@ const LeadsDashboard = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Simulating Firebase Fetch
+  // Firebase Live Fetch
   useEffect(() => {
-    // In production:
-    // const q = query(collection(db, "leads"), orderBy("createdAt", "desc"));
-    // onSnapshot(q, (snapshot) => {
-    //   setLeads(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-    // });
+    const q = query(collection(db, "leads"), orderBy("createdAt", "desc"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const leadsData: Lead[] = snapshot.docs.map(doc => {
+        const data = doc.data();
+        let formattedDate = 'Data Indefinida';
+        
+        if (data.createdAt && typeof data.createdAt.toDate === 'function') {
+          formattedDate = data.createdAt.toDate().toLocaleDateString('pt-BR', { 
+            day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
+          });
+        }
+        
+        return {
+          id: doc.id,
+          lead_name: data.lead_name || '',
+          lead_email: data.lead_email || '',
+          lead_phone: data.lead_phone || '',
+          lead_message: data.lead_message || '',
+          createdAt: formattedDate
+        };
+      });
+      setLeads(leadsData);
+    });
     
-    // Mock data
-    setLeads([
-      { id: '1', lead_name: 'Carlos Silva', lead_email: 'carlos@empresa.com', lead_phone: '(11) 99999-1111', lead_message: 'Preciso de um novo site para meu e-commerce.', createdAt: '20/04/2026' },
-      { id: '2', lead_name: 'Ana Souza', lead_email: 'ana@startup.io', lead_phone: '(21) 98888-2222', lead_message: 'Gostaria de um orçamento de UX Design.', createdAt: '19/04/2026' },
-      { id: '3', lead_name: 'Marcos Paulo', lead_email: 'marcos@agencia.br', lead_phone: '(31) 97777-3333', lead_message: 'Campanha de marketing digital regional.', createdAt: '18/04/2026' }
-    ]);
+    // Cleanup da escuta de rede para evitar vazamentos de memória quando saímos da página
+    return () => unsubscribe();
   }, []);
 
   const filteredLeads = leads.filter(lead => 
