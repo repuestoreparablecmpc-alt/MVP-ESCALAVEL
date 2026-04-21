@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LogOut, LayoutDashboard, Settings, Image as ImageIcon, Save } from 'lucide-react';
 import './Dashboard.css';

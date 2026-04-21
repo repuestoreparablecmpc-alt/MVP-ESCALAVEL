@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Rocket, Code, Smartphone, Palette, CheckCircle, ChevronRight, Mail, User, Phone, MessageSquare } from 'lucide-react';
 import './LandingPage.css';
