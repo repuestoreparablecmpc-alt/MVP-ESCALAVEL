@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Rocket, Code, Smartphone, Palette, CheckCircle, ChevronRight, Mail, User, Phone, MessageSquare } from 'lucide-react';
+import { Rocket, Code, Database, Bot, CheckCircle, ChevronRight, Mail, User, Phone, MessageSquare, Globe, Github, Zap, Network } from 'lucide-react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import './LandingPage.css';
@@ -36,30 +36,38 @@ const LandingPage = () => {
       {/* Navbar Minimalist */}
       <nav className="navbar">
         <div className="container nav-content">
-          <div className="logo"><Rocket className="accent-icon" /> NextLevel Services</div>
-          <a href="#contato" className="btn btn-outline">Solicitar Orçamento</a>
+          <div className="logo"><Rocket className="accent-icon" /> MVP na Prática</div>
+          <a href="#contato" className="btn btn-outline">Participar Agora</a>
         </div>
       </nav>
 
       {/* Hero Section */}
       <section className="hero section">
         <div className="container hero-content animate-fade-in">
+          
+          <div className="tech-stack-badges">
+             <span className="badge"><Bot size={14} className="accent-icon" /> I.A. Avançada</span>
+             <span className="badge"><Code size={14} className="accent-icon" /> React Vite</span>
+             <span className="badge"><Database size={14} className="accent-icon" /> Firebase (Google)</span>
+             <span className="badge"><Github size={14} className="accent-icon" /> GitHub</span>
+             <span className="badge"><Globe size={14} className="accent-icon" /> Netlify</span>
+          </div>
+
           <h1 className="hero-title">
-            Transformando Visitantes em <br />
-            <span className="text-gradient">Potenciais Clientes</span>
+            Do Zero a um <br />
+            <span className="text-gradient">Produto Escalável</span>
           </h1>
           <p className="hero-subtitle">
-            Criação de interfaces de alta conversão, design premium e estratégias de
-            marketing digital voltadas para resultados reais.
+            Entenda como construímos softwares modernos atuando lado a lado com agentes de Inteligência Artificial usando arquitetura Serverless. 
           </p>
           <div className="hero-cta">
             <a href="#contato" className="btn btn-primary">
-              Iniciar Meu Projeto <ChevronRight size={20} style={{marginLeft: '8px'}} />
+              Iniciar Minha Jornada <ChevronRight size={20} style={{marginLeft: '8px'}} />
             </a>
           </div>
           <div className="hero-metrics">
-            <div className="metric"><span className="text-gradient">+150</span> Projetos Entregues</div>
-            <div className="metric"><span className="text-gradient">98%</span> Satisfação</div>
+            <div className="metric"><span className="text-gradient">Vite</span> Ultra Rápido</div>
+            <div className="metric"><span className="text-gradient">100%</span> Nuvem Gratuita</div>
           </div>
         </div>
       </section>
@@ -68,72 +76,43 @@ const LandingPage = () => {
       <section className="services section bg-alt" id="servicos">
         <div className="container">
           <div className="section-header">
-            <h2>Nossos <span className="text-gradient">Serviços</span></h2>
-            <p>Soluções completas para posicionar sua marca no topo.</p>
+            <h2>Nossa <span className="text-gradient">Engenharia</span></h2>
+            <p>Os pilares da construção de um projeto sustentável e de rápida entrega.</p>
           </div>
           
           <div className="services-grid">
             <div className="glass-card service-card">
-              <div className="icon-wrapper"><Palette size={32} /></div>
-              <h3>UX/UI Design</h3>
-              <p>Interfaces bonitas, responsivas e focadas na experiência do usuário para maximizar a retenção.</p>
+              <div className="icon-wrapper"><Bot size={32} /></div>
+              <h3>Programação em Pares com IA</h3>
+              <p>Trabalho fluido onde AI elabora lógicas complexas e constrói telas em segundos, liderados por agentes como o Antigravity.</p>
             </div>
             
             <div className="glass-card service-card">
-              <div className="icon-wrapper"><Code size={32} /></div>
-              <h3>Desenvolvimento Web</h3>
-              <p>Sites rápidos e otimizados usando as tecnologias mais modernas do mercado (React, Next.js, Node).</p>
+              <div className="icon-wrapper"><Network size={32} /></div>
+              <h3>Arquitetura Cloud & Dados</h3>
+              <p>Modelagem de banco de dados em tempo real utilizando Firebase Firestore diretamente do Navegador, sem servidores complexos.</p>
             </div>
             
             <div className="glass-card service-card">
-              <div className="icon-wrapper"><Smartphone size={32} /></div>
-              <h3>Marketing Digital</h3>
-              <p>Estratégias de alto impacto para atrair tráfego qualificado e converter em vendas previsíveis.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio Section */}
-      <section className="portfolio section">
-        <div className="container">
-          <div className="section-header">
-            <h2>Trabalhos <span className="text-gradient">Realizados</span></h2>
-            <p>O impacto do nosso design no mundo real.</p>
-          </div>
-          
-          <div className="portfolio-grid">
-            {/* Using placeholders - ideally generate_image would create these */}
-            <div className="portfolio-item glass-card">
-              <div className="portfolio-img bg-gradient-1"></div>
-              <h4>E-Commerce de Moda</h4>
-              <p className="text-muted">Aumento de 40% na conversão</p>
-            </div>
-            <div className="portfolio-item glass-card">
-              <div className="portfolio-img bg-gradient-2"></div>
-              <h4>App SaaS Inovador</h4>
-              <p className="text-muted">Mais de 10k downloads semanais</p>
-            </div>
-            <div className="portfolio-item glass-card">
-              <div className="portfolio-img bg-gradient-3"></div>
-              <h4>Plataforma Educacional</h4>
-              <p className="text-muted">Engajamento de alunos triplicado</p>
+              <div className="icon-wrapper"><Zap size={32} /></div>
+              <h3>Deploy Contínuo e CI/CD</h3>
+              <p>Integração entre GitHub e Netlify permitindo que toda alteração de código atualize instantaneamente a aplicação na Nuvem.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Form Section */}
-      <section className="contact section bg-alt" id="contato">
+      <section className="contact section" id="contato">
         <div className="container contact-container">
           <div className="contact-info">
-            <h2>Pronto para escalar <br/>o seu <span className="text-gradient">Negócio?</span></h2>
-            <p>Deixe seus dados e entraremos em contato rapidamente com uma proposta personalizada.</p>
+            <h2>Construa algo <br/>Incrível <span className="text-gradient">Conosco</span></h2>
+            <p>Se tem intenção de escalar um MVP rapidamente, cadastre seus dados para receber o conteúdo prático e completo desse case.</p>
             
             <div className="contact-perks">
-              <p><CheckCircle className="accent-icon" size={20} /> Orçamento sem compromisso</p>
-              <p><CheckCircle className="accent-icon" size={20} /> Análise gratuita da sua presença atual</p>
-              <p><CheckCircle className="accent-icon" size={20} /> Atendimento premium</p>
+              <p><CheckCircle className="accent-icon" size={20} /> Metodologia Hands-on (Mão na Massa)</p>
+              <p><CheckCircle className="accent-icon" size={20} /> Mentoria focada em Lógica Cloud</p>
+              <p><CheckCircle className="accent-icon" size={20} /> Acesso Acelerado às Ferramentas</p>
             </div>
           </div>
           
@@ -145,32 +124,32 @@ const LandingPage = () => {
               </div>
               
               <div className="form-group">
-                <label className="form-label" htmlFor="lead_email"><Mail size={16} /> E-mail Profissional</label>
+                <label className="form-label" htmlFor="lead_email"><Mail size={16} /> E-mail Principal</label>
                 <input type="email" id="lead_email" name="lead_email" className="form-input" placeholder="seu@email.com" required />
               </div>
               
               <div className="form-group">
-                <label className="form-label" htmlFor="lead_phone"><Phone size={16} /> Telefone / WhatsApp</label>
+                <label className="form-label" htmlFor="lead_phone"><Phone size={16} /> WhatsApp de Contato</label>
                 <input type="tel" id="lead_phone" name="lead_phone" className="form-input" placeholder="(00) 00000-0000" required />
               </div>
               
               <div className="form-group">
-                <label className="form-label" htmlFor="lead_message"><MessageSquare size={16} /> Como podemos ajudar?</label>
-                <textarea id="lead_message" name="lead_message" className="form-input" placeholder="Descreva brevemente seu projeto..." required></textarea>
+                <label className="form-label" htmlFor="lead_message"><MessageSquare size={16} /> Qual é o seu nicho de projeto?</label>
+                <textarea id="lead_message" name="lead_message" className="form-input" placeholder="Ex: Eu gostaria de construir um SaaS para minha agência..." required></textarea>
               </div>
               
               <button type="submit" className="btn btn-primary w-full" disabled={isSubmitting}>
-                {isSubmitting ? 'Enviando...' : 'Solicitar Orçamento'}
+                {isSubmitting ? 'Cadastrando Projeto...' : 'Quero Escalar Meu Projeto'}
               </button>
-              <p className="form-sec-text">Seus dados estão seguros conosco.</p>
+              <p className="form-sec-text">O seu contato estará seguro em nosso banco Firestore.</p>
             </form>
           </div>
         </div>
       </section>
 
-      <footer className="footer">
+      <footer className="footer bg-alt">
         <div className="container">
-          <p>© 2026 NextLevel Services. Todos os direitos reservados.</p>
+          <p>© 2026 MVP na Prática & Antigravity. Todos os direitos reservados.</p>
         </div>
       </footer>
     </div>
