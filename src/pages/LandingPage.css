@@ -300,5 +300,25 @@
 @media (max-width: 900px) {
   .contact-container {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .contact-form-wrapper {
+    padding: 1.5rem;
+  }
+
+  .hero-metrics {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .tech-stack-badges {
+    gap: 0.5rem;
+  }
+
+  .badge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
   }
 }

@@ -34,16 +34,16 @@ const SuccessPage = () => {
             </p>
             
             <form onSubmit={handleUnlock} style={{ marginBottom: '1.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.05)', padding: '0.4rem', borderRadius: '50px', border: error ? '1px solid var(--error)' : '1px solid var(--border)' }}>
-                <Lock size={20} className="text-muted" style={{ marginLeft: '15px' }} />
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.05)', padding: '0.4rem', borderRadius: '16px', border: error ? '1px solid var(--error)' : '1px solid var(--border)' }}>
+                <Lock size={20} className="text-muted" style={{ marginLeft: '10px' }} />
                 <input 
                   type="text" 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Digite a senha..." 
-                  style={{ background: 'transparent', border: 'none', color: 'white', flex: 1, padding: '0.6rem', outline: 'none' }}
+                  placeholder="Senha secreta..." 
+                  style={{ background: 'transparent', border: 'none', color: 'white', flex: '1 1 150px', padding: '0.6rem', outline: 'none', minWidth: '150px' }}
                 />
-                <button type="submit" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem' }}>Acessar</button>
+                <button type="submit" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', flex: '1 1 auto', textAlign: 'center', margin: '0.2rem' }}>Acessar</button>
               </div>
               {error && <span style={{ color: 'var(--error)', fontSize: '0.85rem', marginTop: '0.8rem', display: 'block', fontWeight: 500 }}>⚠️ Senha incorreta. Tente novamente!</span>}
             </form>
