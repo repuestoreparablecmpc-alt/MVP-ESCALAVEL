@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Rocket, Code, Database, Bot, CheckCircle, ChevronRight, Mail, User, Phone, MessageSquare, Globe, Github, Zap, Network } from 'lucide-react';
+import { Rocket, Code, Database, Bot, CheckCircle, ChevronRight, Mail, User, Phone, MessageSquare, Globe, GitBranch, Zap, Network } from 'lucide-react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import './LandingPage.css';
@@ -49,7 +49,7 @@ const LandingPage = () => {
              <span className="badge"><Bot size={14} className="accent-icon" /> I.A. Avançada</span>
              <span className="badge"><Code size={14} className="accent-icon" /> React Vite</span>
              <span className="badge"><Database size={14} className="accent-icon" /> Firebase (Google)</span>
-             <span className="badge"><Github size={14} className="accent-icon" /> GitHub</span>
+             <span className="badge"><GitBranch size={14} className="accent-icon" /> GitHub</span>
              <span className="badge"><Globe size={14} className="accent-icon" /> Netlify</span>
           </div>
 
