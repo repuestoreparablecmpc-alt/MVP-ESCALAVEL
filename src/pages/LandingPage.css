@@ -250,6 +250,53 @@
   font-size: 0.9rem;
 }
 
+/* Price Tags Radio Buttons UI */
+.price-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.price-tag-label {
+  cursor: pointer;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.price-tag-pill {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--light);
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.price-tag-label:hover .price-tag-pill {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.price-tag-label input:checked + .price-tag-pill {
+  background: rgba(155, 77, 255, 0.2);
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(155, 77, 255, 0.3);
+}
+
 @media (max-width: 900px) {
   .contact-container {
     grid-template-columns: 1fr;

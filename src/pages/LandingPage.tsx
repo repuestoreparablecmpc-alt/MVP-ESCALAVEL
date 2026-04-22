@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Rocket, Code, Database, Bot, CheckCircle, ChevronRight, Mail, User, Phone, MessageSquare, Globe, GitBranch, Zap, Network } from 'lucide-react';
+import { Rocket, Code, Database, Bot, CheckCircle, ChevronRight, Mail, User, Phone, Globe, GitBranch, Zap, Network, DollarSign } from 'lucide-react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import './LandingPage.css';
@@ -131,6 +131,29 @@ const LandingPage = () => {
               <div className="form-group">
                 <label className="form-label" htmlFor="lead_phone"><Phone size={16} /> WhatsApp de Contato</label>
                 <input type="tel" id="lead_phone" name="lead_phone" className="form-input" placeholder="(00) 00000-0000" required />
+              </div>
+              <div className="form-group">
+                <label className="form-label" style={{ marginBottom: '0.8rem', display: 'block' }}>
+                  <DollarSign size={16} /> Quanto você pagaria para ter esse material?
+                </label>
+                <div className="price-tags-container">
+                  <label className="price-tag-label">
+                    <input type="radio" name="lead_price_intent" value="10_a_50" required className="sr-only" />
+                    <span className="price-tag-pill">De 10 a 50</span>
+                  </label>
+                  <label className="price-tag-label">
+                    <input type="radio" name="lead_price_intent" value="50_a_100" className="sr-only" />
+                    <span className="price-tag-pill">De 50 a 100</span>
+                  </label>
+                  <label className="price-tag-label">
+                    <input type="radio" name="lead_price_intent" value="100_a_150" className="sr-only" />
+                    <span className="price-tag-pill">100 a 150</span>
+                  </label>
+                  <label className="price-tag-label">
+                    <input type="radio" name="lead_price_intent" value="0_gratuito" className="sr-only" />
+                    <span className="price-tag-pill">Não pagaria nada</span>
+                  </label>
+                </div>
               </div>
               
               <button type="submit" className="btn btn-primary w-full" disabled={isSubmitting}>
