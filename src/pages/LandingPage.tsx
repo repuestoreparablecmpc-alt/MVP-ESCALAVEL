@@ -37,7 +37,7 @@ const LandingPage = () => {
       <nav className="navbar">
         <div className="container nav-content">
           <div className="logo"><Rocket className="accent-icon" /> MVP na Prática</div>
-          <a href="#contato" className="btn btn-outline">Participar Agora</a>
+          <a href="#contato" className="btn btn-outline">Baixar o Guia Grátis</a>
         </div>
       </nav>
 
@@ -62,7 +62,7 @@ const LandingPage = () => {
           </p>
           <div className="hero-cta">
             <a href="#contato" className="btn btn-primary">
-              Iniciar Minha Jornada <ChevronRight size={20} style={{marginLeft: '8px'}} />
+              Desbloquear o Passo a Passo <ChevronRight size={20} style={{marginLeft: '8px'}} />
             </a>
           </div>
           <div className="hero-metrics">
@@ -106,8 +106,8 @@ const LandingPage = () => {
       <section className="contact section" id="contato">
         <div className="container contact-container">
           <div className="contact-info">
-            <h2>Construa algo <br/>Incrível <span className="text-gradient">Conosco</span></h2>
-            <p>Se tem intenção de escalar um MVP rapidamente, cadastre seus dados para receber o conteúdo prático e completo desse case.</p>
+            <h2>Libere seu Acesso <br/>ao <span className="text-gradient">Guia Completo</span></h2>
+            <p>Preencha com seus dados abaixo para fazer o download imediato do nosso material PDF passo-a-passo.</p>
             
             <div className="contact-perks">
               <p><CheckCircle className="accent-icon" size={20} /> Metodologia Hands-on (Mão na Massa)</p>
@@ -133,13 +133,8 @@ const LandingPage = () => {
                 <input type="tel" id="lead_phone" name="lead_phone" className="form-input" placeholder="(00) 00000-0000" required />
               </div>
               
-              <div className="form-group">
-                <label className="form-label" htmlFor="lead_message"><MessageSquare size={16} /> Qual é o seu nicho de projeto?</label>
-                <textarea id="lead_message" name="lead_message" className="form-input" placeholder="Ex: Eu gostaria de construir um SaaS para minha agência..." required></textarea>
-              </div>
-              
               <button type="submit" className="btn btn-primary w-full" disabled={isSubmitting}>
-                {isSubmitting ? 'Cadastrando Projeto...' : 'Quero Escalar Meu Projeto'}
+                {isSubmitting ? 'Verificando e Liberando...' : 'Baixar Agora (PDF)'}
               </button>
               <p className="form-sec-text">O seu contato estará seguro em nosso banco Firestore.</p>
             </form>
